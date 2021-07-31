@@ -33,9 +33,6 @@ class Home extends Controller
 			$articles_data = $articles;
 		}
 
-
-
-
 		View::render('home/index',
 			[
 				'page_title' => 'Home',

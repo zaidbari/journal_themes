@@ -32,11 +32,11 @@ class Error
 	/**
 	 * Exception handler.
 	 *
-	 * @param Exception $exception The exception
+	 * @param $exception
 	 *
 	 * @return void
 	 */
-	public static function exceptionHandler( Exception $exception )
+	public static function exceptionHandler( $exception )
 	{
 		// Code is 404 (not found) or 500 (general error)
 		$code = $exception->getCode();
