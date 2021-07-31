@@ -41,7 +41,9 @@
         </div>
         <div class="col-md-3 px-md-4">
             {% if events|length > 0 %}
-                <h5 class="text-secondary fw-bold mb-4">Events</h5>
+                <div class="article-list mb-4">
+                    <h3 class="alert bg-secondary text-white">Events</h3>
+                </div>
                 {% for event in events %}
                     {% if event.info and event.info.images %}
                         <img loading="lazy" src="//epublishing.io/storage/{{ event.info.images[0] }}" alt="event cover" class="w-100 mb-4 shadow">
@@ -54,12 +56,12 @@
                 <div class="article-list mb-4">
                     <h3 class="alert bg-secondary text-white">News</h3>
                 </div>
-                {% for newss in news %}
-                    {% if newss.info and newss.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ newss.info.images[0] }}" alt="news cover" class="w-100 mb-4 shadow">
+                {% for n in news %}
+                    {% if n.info and news.info.images %}
+                        <img loading="lazy" src="//epublishing.io/storage/{{ n.info.images[0] }}" alt="news cover" class="w-100 mb-4 shadow">
                     {% endif %}
-                    <p class="lead">{{ newss.title }}</p>
-                    <p>{{ newss.content|raw }}</p>
+                    <p class="lead">{{ n.title }}</p>
+                    <p>{{ n.content|raw }}</p>
                 {% endfor %}
             {% endif %}
             {% if featured_articles|length > 0 %}
@@ -68,11 +70,11 @@
                 </div>
                 {% for article in featured_articles %}
                     {% if article.info and article.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ newss.info.images[0] }}" alt="article cover" class="w-100 mb-4 shadow">
+                        <img loading="lazy" src="//epublishing.io/storage/{{ article.info.images[0] }}" alt="article cover" class="w-100 mb-4 shadow">
                     {% endif %}
                     <p class="lead">{{ article.title }}</p>
                     <p>{{ article.content|raw }}</p>
-                    <a href="{{ article.url }}" class="btn btn-secondary btn-sm">Read full article</a>
+                    <a href="{{ article.info.url }}" class="btn btn-secondary btn-sm">Read full article</a>
                 {% endfor %}
             {% endif %}
             {% if announcements %}
