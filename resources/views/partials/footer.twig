@@ -1,0 +1,26 @@
+<footer class="bg-secondary py-5">
+    <div class="container-fluid px-md-4 text-white">
+        <div class="row">
+            {% if menu.footer.groups|cast_to_array  %}
+                {% for item in menu.footer.groups|cast_to_array %}
+                    {% if item.links|cast_to_array|length > 0 %}
+                        <div class="col-md-3">
+                            <h3 class="mb-3">{{ item.title == 'Help' ? 'Miscellaneous' : item.title }}</h3>
+                            <ul class="list-unstyled">
+                                {% for link in item.links %}
+                                    <li class="mb-1"><a href="/page/{{ link.slug }}" class="text-light">{{ link.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <hr style="color: white">
+        <div class="text-center">
+            {% include 'buttons/submit-article.twig' %}
+            {% include 'buttons/reviewer-login.twig' %}
+            {% include 'buttons/author-login.twig' %}
+        </div>
+    </div>
+</footer>

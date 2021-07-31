@@ -1,0 +1,21 @@
+{% extends "layout.twig" %}
+{% block content  %}
+    {% include 'articles/components/header.twig' %}
+    <div class="container my-5">
+
+        {% include 'articles/components/nav.twig' %}
+
+        <div class="tab-content my-4" id="pills-tabContent">
+            <h3>{{ article.title|raw }}</h3>
+            <hr />
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                {% include 'articles/components/abstract.twig' %}
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                {% include 'articles/components/citations.twig' %}
+            </div>
+        </div>
+
+    </div>
+
+{%  endblock  %}

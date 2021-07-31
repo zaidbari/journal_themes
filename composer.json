@@ -1,0 +1,16 @@
+{
+    "require": {
+        "klein/klein": "^2.1",
+        "filp/whoops": "^2.9",
+        "monolog/monolog": "^2.2",
+        "twig/twig": "^3.3",
+        "vlucas/phpdotenv": "^5.3",
+      "ext-curl": "*"
+    },
+    "autoload": {
+      "psr-4": {
+        "Core\\": "Core/",
+        "App\\": "App/"
+      }
+    }
+}

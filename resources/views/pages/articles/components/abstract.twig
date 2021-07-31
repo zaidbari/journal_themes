@@ -1,0 +1,46 @@
+<p>
+    <span class="fw-bold text-secondary">Authors: </span>
+    {% for author in article.authors|cast_to_array %}
+        <a class=""
+           tabindex="0"
+           role="button"
+           data-bs-toggle="popover"
+           data-bs-placement="bottom"
+           data-bs-trigger="focus"
+           title="{{ author.title }} {{ author.name }}"
+           data-bs-content="{{ author.affiliation }}"
+           data-bs-html="true"
+        > {{ author.title }} {{ author.name }}{% if loop.last == false %}, {% endif %}</a>
+    {% endfor %}
+</p>
+<hr />
+<a class="btn btn-sm btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Article Info
+</a>
+<div class="collapse mt-3" id="collapseExample">
+    <div class="card card-body">
+        {% include 'articles/components/info.twig' %}
+    </div>
+</div>
+<hr>
+<h3>Abstract</h3>
+<hr>
+{{ article.abstract|raw }}
+
+
+<hr /><p><span class="fw-bold text-secondary">Keywords: </span>{{ article.tags }}</p><hr />
+<div class="d-flex">
+    <a rel="license" href="/page/license_information" target="_blank">
+        <img loading="lazy" alt="Open access" class="me-2" style="height: 30px" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Open_Access_logo_PLoS_white.svg" />
+    </a>
+    <a rel="license" class="mx-3" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <img loading="lazy" alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+    </a>
+
+    <span class="__dimensions_badge_embed__" data-doi="{{ get_var('DOI') }}-{{ article.id }}" data-hide-zero-citations="true" data-style="large_rectangle"></span>
+</div>
+
+
+<hr>
+{{ html|raw }}
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>

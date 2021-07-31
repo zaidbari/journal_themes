@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-brand fw-bold text-secondary d-md-block d-lg-none">More Info</span>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#article_navbar" aria-controls="article_navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-filter-right"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="article_navbar">
+            <ul class="nav navbar-nav me-auto">
+                {% if article.previous != null %}
+                    <li class="nav-item">
+                        <a href="/{{ DOI }}-{{ article.previous.id }}" class="nav-link text-secondary fw-bold">
+                            <i class="bi bi-arrow-left"></i> Previous Article
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="/" class="nav-link fw-bold disabled" disabled>
+                            <i class="bi bi-arrow-left"></i> Previous Article
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav mx-auto" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a href="#" class="nav-link fw-bold active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Abstract</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a href="#" class="nav-link fw-bold" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">How to Cite</a>
+                </li>
+                {%  if get_pdf(article.id) %}
+                    <a href="/{{ DOI }}-{{ article.id }}/pdf"  class="nav-link fw-bold">Download PDF</a>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav ms-auto">
+                {% if article.next != null %}
+                    <li class="nav-item">
+                        <a href="/{{ DOI }}-{{ article.next.id }}"  class="nav-link text-secondary fw-bold">
+                            Next Article <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="/"  class="nav-link fw-bold disabled" disabled>
+                            Next Article <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

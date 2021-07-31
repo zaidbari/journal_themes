@@ -1,0 +1,20 @@
+{% extends "layout.twig" %}
+{% block content  %}
+    <div class="py-5 bg-light">
+        <div class="container text-center">
+            <h1>Article Full Text</h1>
+            {% if article.previous != null %}
+                <a href="/article/{{ article.previous.id }}" class="btn btn-outline-secondary">Previous Article</a>
+            {% endif %}
+            <a href="/article/{{ article.id }}" class="btn btn-sm btn-secondary">Article Abstract</a>
+            {% if article.next != null %}
+                <a href="/article/{{ article.next.id }}" class="btn btn-sm btn-outline-secondary">Next Article Article</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        {{ html|raw }}
+    </div>
+{%  endblock  %}

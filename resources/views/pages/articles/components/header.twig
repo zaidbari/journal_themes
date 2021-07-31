@@ -1,0 +1,24 @@
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h3>
+            {{ article.type }}
+        </h3>
+        <div>
+            <p class="lead">
+                {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                    Volume {{ article.volume }}, Issue {{ article.issue }}, {% endif %} Year {{ article.published_at|date('Y') }}
+                {% if article.code != null %}
+                    {{ article.code }}
+                {% else %}
+                    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                        , Page ({{ article. first_page }} - {{ article.last_page }})
+                    {% endif %}
+                {% endif %}
+            </p>
+            {% if article.doi != null %}
+                <a target="_blank" class="d-block" rel="noreferrer noopener" href="https://dx.doi.org/{{ article.doi }}">https://dx.doi.org/{{ article.doi }}</a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

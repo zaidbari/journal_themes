@@ -1,0 +1,49 @@
+{% extends "layout.twig" %}
+{% block content  %}
+    <div class="py-5 bg-light">
+        <div class="container text-center">
+            <h1>{{ page_title }}</h1>
+        </div>
+    </div>
+    <div class="container my-5">
+        <form id="form">
+            <div class="row">
+                <div class="col-md-9">
+                    <input type="text" id="reference_no" class="form-control w-100 mb-3" placeholder="Reference Number" required />
+                </div>
+                <div class="col-md-3"><button class="btn d-block w-100 btn-primary">Check</button></div>
+            </div>
+        </form>
+        <div class="my-5">
+            <div class="alert alert-info fw-bold">Status: <span id="status" class="fw-normal"></span></div>
+            <div class="" id="msg"></div>
+        </div>
+    </div>
+{%  endblock  %}
+
+{% block scripts %}
+<script>
+    var form = document.querySelector('#form')
+
+    var data = document.querySelector('#reference_no')
+
+    form.addEventListener( "submit", function ( event ) {
+        event.preventDefault();
+        var fdata= new FormData()
+        fdata.append('reference_no', data.value);
+
+        fetch('{{ get_var('API_URL') }}articles/status', {
+            method: 'POST',
+            body: fdata
+        })
+            .then(response => response.json())
+            .then(({data}) => {
+                console.log(data)
+                document.querySelector('#status').innerText = data.status
+                document.querySelector('#msg').innerText = data.message ? data.message : ''
+            });
+
+    } );
+
+</script>
+{% endblock %}

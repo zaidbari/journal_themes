@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header.twig" %}
+    <title>{{ page_title ? page_title | upper ~ ' | ' : '' }} {{ APP_NAME | upper }}</title>
+    {% if CURRENT_ROUTE == '/log/error' or CURRENT_ROUTE == '/log/request' %}
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="googlebot" content="noindex, nofollow">
+    {% endif %}
+</head>
+<body>
+    {% include "navbar.twig" %}
+
+    <main>{% block content %}{% endblock %}</main>
+    {% include "footer.twig" %}
+    {% include "scripts.twig" %}
+{% block scripts %}{% endblock %}
+</body>
+</html>

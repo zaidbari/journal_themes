@@ -1,0 +1,25 @@
+<div class="bg-light py-md-5 py-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-4 px-4">
+                <img src="//epublishing.io/storage/{{ journal.cover }}" loading="lazy" class="img-fluid shadow-lg rounded mb-2" alt="{{ APP_NAME }} current issue cover">
+                {% if journal.issn != null %}
+                    <span><b class="text-secondary">ISSN: </b>{{ journal.issn }}</span> <br />
+                {% endif %}
+                {% if journal.eissn != null %}
+                    <span><b class="text-secondary">EISSN: </b>{{ journal.eissn }}</span>
+                {% endif %}
+
+            </div>
+            <div class="col-lg-7 align-self-center col-md-8 px-4">
+                <h1>{{ journal.title }}</h1>
+                <p class="lead">{{ data.subtitle }}</p>
+                {{ short_desc|raw }}
+                <div>
+                    {% include 'buttons/submit-article.twig' %}
+                    {% include 'buttons/reviewer-login.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
