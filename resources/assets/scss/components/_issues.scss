@@ -7,7 +7,7 @@
     background: rgba(map-get($theme-colors, 'primary'), 0.3)
   }
   .article {
-    border-left: 5px solid  map-get($theme-colors, 'primary');
+    border-left: 5px solid  map-get($theme-colors, 'secondary');
     margin-bottom: 15px;
     @extend %transition;
     a.title {

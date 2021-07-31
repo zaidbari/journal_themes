@@ -76,14 +76,13 @@ class Articles
 		$response->file($pdf);
 	}
 
+
+
 	public function current()
 	{
 
-	    $articles = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles')['body'];
-
-		if(!isset($articles->data)) {
-			$articles_data = [];
-		} else $articles_data = $articles;
+		$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles')['body'];
+		$articles_data = (array) $articles->data ?? [];
 
 		View::render('articles/list', [
 				'page_title' => 'Current Issue',

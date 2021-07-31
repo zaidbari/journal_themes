@@ -7,9 +7,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ms-auto mb-3 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link {{ CURRENT_ROUTE == '/'? 'text-primary fw-bold': '' }}" href="/">Home</a>
+					<a class="nav-link {{ CURRENT_ROUTE == '/'? 'text-secondary fw-bold': '' }}" href="/">Home</a>
 				</li>
 
+				{% if get_var('PUBLISHING_TYPE') == 'Regular' %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Issues
@@ -21,8 +22,13 @@
 						<li><a class="dropdown-item" {{ CURRENT_ROUTE == '/archives'? 'fw-bold': '' }} href="/archives">Archives</a></li>
 					</ul>
 				</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link {{ CURRENT_ROUTE == '/latest-articles'? 'text-secondary fw-bold': '' }}" href="/latest-articles">Articles</a>
+						</li>
+				{% endif %}
 				<li class="nav-item">
-					<a class="nav-link {{ CURRENT_ROUTE == '/track-article'? 'text-primary fw-bold': '' }}" href="/track-article">Track article</a>
+					<a class="nav-link {{ CURRENT_ROUTE == '/track-article'? 'text-secondary fw-bold': '' }}" href="/track-article">Track article</a>
 				</li>
 				{% if menu.header.groups|cast_to_array  %}
 					{% for item in menu.header.groups|cast_to_array %}
@@ -42,7 +48,7 @@
 				{% endif %}
 				{% for item in menu.header.links %}
 					<li class="nav-item">
-						<a class="nav-link {{ CURRENT_ROUTE == '/page/' ~ item.slug ? 'text-primary fw-bold': '' }}" href="/page/{{ item.slug }}">{{ item.title }}</a>
+						<a class="nav-link {{ CURRENT_ROUTE == '/page/' ~ item.slug ? 'text-secondary fw-bold': '' }}" href="/page/{{ item.slug }}">{{ item.title }}</a>
 					</li>
 				{% endfor %}
 			</ul>

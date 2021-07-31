@@ -51,7 +51,9 @@
                 {% endfor %}
             {% endif %}
             {% if news|length > 0 %}
-                <h5 class="text-secondary fw-bold mb-4">News</h5>
+                <div class="article-list mb-4">
+                    <h3 class="alert bg-secondary text-white">News</h3>
+                </div>
                 {% for newss in news %}
                     {% if newss.info and newss.info.images %}
                         <img loading="lazy" src="//epublishing.io/storage/{{ newss.info.images[0] }}" alt="news cover" class="w-100 mb-4 shadow">
@@ -61,7 +63,9 @@
                 {% endfor %}
             {% endif %}
             {% if featured_articles|length > 0 %}
-                <h5 class="text-secondary fw-bold mb-4">Featured Article</h5>
+                <div class="article-list mb-4">
+                    <h3 class="alert bg-secondary text-white">Featured Article</h3>
+                </div>
                 {% for article in featured_articles %}
                     {% if article.info and article.info.images %}
                         <img loading="lazy" src="//epublishing.io/storage/{{ newss.info.images[0] }}" alt="article cover" class="w-100 mb-4 shadow">
@@ -72,7 +76,9 @@
                 {% endfor %}
             {% endif %}
             {% if announcements %}
-                <h5 class="text-secondary fw-bold mb-4">Announcements</h5>
+                <div class="article-list mb-4">
+                    <h3 class="alert bg-secondary text-white">Announcements</h3>
+                </div>
                 {% for announcement in announcements %}
                     {% if announcement.info and announcement.info.images %}
                         <img loading="lazy" src="//epublishing.io/storage/{{ announcement.info.images[0] }}" alt="announcement cover" class="w-100 mb-4 shadow">

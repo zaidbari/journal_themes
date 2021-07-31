@@ -15,7 +15,7 @@ class Archives
 	{
 		$a = [];
 		foreach ((array) $v as $key => $value) {
-			$a[] = [ 'number' => $value->number, 'title' => $value->title, 'year' => $value->year, 'issue' => $value->issues ];
+			$a[] = [ 'number' => $value->number, 'title' => $value->title, 'issue' => $value->issues ];
 		}
 		return $a;
 	}

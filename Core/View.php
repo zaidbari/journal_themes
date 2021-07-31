@@ -28,13 +28,15 @@ class View
 	 *
 	 * @return void
 	 */
-	public static function render( string $template, $args = [] )
+	public static function render( string $template, array $args = [] )
 	{
 		static $twig = null;
 
 		if($twig == null) {
 
-			$loader = new FilesystemLoader(['resources/views/pages', 'resources/views/partials']);
+			$theme = Config::env('JOURNAL_THEME');
+
+			$loader = new FilesystemLoader(['resources/views/themes/'.$theme.'/pages', 'resources/views/themes/'.$theme.'/partials']);
 			$twig = new Environment($loader, [
 				'cache' => Config::CACHE,
 				'auto_reload' => Config::RELOAD
