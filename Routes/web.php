@@ -14,10 +14,9 @@ $router->res('/', 'Home@index');
 $router->res('/current-issue', 'Articles@current');
 $router->res('/latest-articles', 'Articles@latest');
 $router->res('/track-article', 'Articles@track');
-
+$router->res('/outstanding-reviewers', 'Pages@reviewers');
 
 $router->res('/'. Config::env('DOI') . '-[i:id]', 'Articles@show');
-
 $router->res('/'. Config::env('DOI') . '-[i:id]/html', 'Articles@fulltext');
 $router->res('/'. Config::env('DOI') . '-[i:id]/pdf', 'Articles@pdf');
 
@@ -25,12 +24,7 @@ $router->res('/archives', 'Archives@index');
 
 $router->res('/[i:year]/[i:volume]/[i:issue]-[i:id]', 'Issues@index');
 
-
 $router->res('/page/[*:slug]', 'Pages@index');
-
-/* TEMP ROUTE */
-$router->res('/submit-manuscript', 'Pages@submit');
-/* END TEMP ROUTE */
 
 $router->res('/receive-file', 'ReceiveFiles@file', 'POST');
 $router->res('/receive-url', 'ReceiveFiles@url', 'POST');

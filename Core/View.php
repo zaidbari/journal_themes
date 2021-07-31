@@ -44,6 +44,7 @@ class View
 
 			$menu = HTTPRequester::HTTPGet(Config::env('API_URL') . 'pages');
 			$twig->addGlobal('menu',(array)  $menu['body']->data);
+			$twig->addGlobal('THEME', $theme);
 
 			// Global Variables available everywhere in app
 			$twig->addGlobal('APP_NAME', Config::env('APP_NAME'));
