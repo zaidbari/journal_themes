@@ -19,3 +19,15 @@
     </div>
 
 {%  endblock  %}
+
+{% block meta %}
+    <meta name="citation_firstpage" content="{{ article.first_page }}">
+    <meta name="citation_last" content="{{ article.last_page }}">
+    <meta name="citation_doi" content="{{ get_var('DOI') }}-{{ article.id }}">
+    <meta name="dc.identifier" content="{{ get_var('DOI') }}-{{ article.id }}">
+    <meta name="citation_article_type" content="How to use">
+    <meta name="citation_title" content="{{ article.title }}">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:type" content="article">
+    <meta name="citation_publication_date" content="{% if article.timeline.published_at  != null %}{{ article.timeline.published_at|date('Y/m/d') }}{% else %}{{ article.published_at ? article.published_at|date('Y/m/d') : '' }}{% endif %}">
+{% endblock %}

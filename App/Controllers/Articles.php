@@ -37,32 +37,6 @@ class Articles
 		]);
 	}
 
-	public function fulltext($request)
-	{
-		$id = $request->param('id');
-		$a = HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles/' .$id. '/show')['body'];
-
-		if($a != null && !isset($a->error)) {
-			$html = array_search( Config::env('APP_ABBRV') . '-' . $id.'.html',array_diff(scandir($_SERVER['DOCUMENT_ROOT'].'/files/html'), array('..', '.')),true);
-			if($html != false) {
-				$html = str_replace( 'image-' . $id, '/files/html/image-' . $id ,file_get_contents($_SERVER['DOCUMENT_ROOT'].'/files/html/' . Config::env('APP_ABBRV') . '-' . $id . '.html'));
-			} else {
-				$html = '<h1 class="text-center">No Fulltext document found.</h1>';
-			}
-			$article = $a->data;
-		} else {
-			$article = [];
-			$html = false;
-			header('location: /404');
-		}
-
-		View::render('articles/fulltext', [
-			'page_title' => 'Article',
-			'article' => $article,
-			'html' => $html,
-		]);
-	}
-
 	public function pdf($request, $response)
 	{
 		$id = $request->param('id');

@@ -9,16 +9,14 @@
                 Volume {{ article.volume }}, Issue {{ article.issue }}
             {% endif %}
             {% if article.timeline.published_at  != null %}
-               - {{ article.timeline.published_at|date('Y, M d') }}
-            {% else %}
-                {% if article.code != null %}
-                    {{ article.code }}
-                {% else %}
-                    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
-                        , Page ({{ article.first_page }} - {{ article.last_page }})
-                    {% endif %}
-                {% endif %}
-                {% endif %}
+               - {{ article.timeline.published_at|date('F d, Y') }},
+            {% endif %}
+            {% if article.code != null %}
+                {{ article.code }}
+            {% endif %}
+            {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                Page ({{ article.first_page }} - {{ article.last_page }})
+            {% endif %}
 
             </p>
             {% if article.doi != null %}

@@ -17,7 +17,6 @@ $router->res('/track-article', 'Articles@track');
 $router->res('/outstanding-reviewers', 'Pages@reviewers');
 
 $router->res('/'. Config::env('DOI') . '-[i:id]', 'Articles@show');
-$router->res('/'. Config::env('DOI') . '-[i:id]/html', 'Articles@fulltext');
 $router->res('/'. Config::env('DOI') . '-[i:id]/pdf', 'Articles@pdf');
 
 $router->res('/archives', 'Archives@index');
