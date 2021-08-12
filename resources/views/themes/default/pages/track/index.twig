@@ -14,14 +14,11 @@
 {% block scripts %}
     <script>
         var form = document.querySelector('#form')
-
         var data = document.querySelector('#reference_no')
-
         form.addEventListener( "submit", function ( event ) {
             event.preventDefault();
             var fdata= new FormData()
             fdata.append('reference_no', data.value);
-
             fetch('{{ get_var('API_URL') }}articles/status', {
                 method: 'POST',
                 body: fdata
@@ -34,6 +31,5 @@
                 });
 
         } );
-
     </script>
 {% endblock %}

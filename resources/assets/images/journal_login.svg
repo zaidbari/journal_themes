@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="109" viewBox="0 0 480 109">
+    <g transform="translate(-322 -276)">
+        <g transform="translate(468 276)" fill="#fff" stroke="#CD6587" stroke-width="1">
+            <rect x="0.5" y="0.5" width="480" height="108" fill="#fff"/>
+        </g>
+        <rect width="146" height="109" transform="translate(322 276)" fill="#CD6587"/>
+        <g transform="translate(458 357)" fill="#fff" stroke="#CD6587" stroke-width="1">
+            <rect x="0.5" y="0.5" width="490" height="27" fill="none"/>
+        </g>
+        <text transform="translate(695 379)" fill="#707070" font-size="20" font-family="SegoeUI-Bold, Segoe UI"
+              font-weight="700">
+            <tspan x="-66.714" y="0">epublishing</tspan>
+            <tspan y="0" fill="#CD6587">.io</tspan>
+        </text>
+        <text transform="translate(342 347)" fill="#fff" font-size="40" font-family="SegoeUIBlack, Segoe UI">
+            <tspan x="0" y="0">ePUB</tspan>
+        </text>
+        <text transform="translate(590 333)" fill="#CD6587" font-size="30" font-family="SegoeUI, Segoe UI">
+            <tspan x="-86.653" y="0">Login to our Journal System</tspan>
+        </text>
+    </g>
+</svg>
