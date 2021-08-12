@@ -5,7 +5,8 @@
         "monolog/monolog": "^2.2",
         "twig/twig": "^3.3",
         "vlucas/phpdotenv": "^5.3",
-      "ext-curl": "*"
+      "ext-curl": "*",
+      "ext-json": "*"
     },
     "autoload": {
       "psr-4": {

@@ -13,9 +13,9 @@ class HTTPRequester
 	 * @param array $params
 	 * @param int|array $headers
 	 *
-	 * @return array|false|string HTTP-Response body or an empty string if the request fails or is empty
+	 * @return array HTTP-Response body or an empty string if the request fails or is empty
 	 */
-	public static function HTTPGet( $url, array $params = [], $headers = [] )
+	public static function HTTPGet( $url, array $params = [], $headers = [] ) : array
 	{
 		$query = http_build_query($params);
 		$ch = curl_init($url . '?' . $query);
