@@ -27,9 +27,6 @@
 							<a class="nav-link {{ CURRENT_ROUTE == '/latest-articles'? 'text-secondary fw-bold': '' }}" href="/latest-articles">Articles</a>
 						</li>
 				{% endif %}
-				<li class="nav-item">
-					<a class="nav-link {{ CURRENT_ROUTE == '/track-article'? 'text-secondary fw-bold': '' }}" href="/track-article">Track article</a>
-				</li>
 				{% if menu.header.groups|cast_to_array  %}
 					{% for item in menu.header.groups|cast_to_array %}
 						{% if item.links|cast_to_array|length > 0 %}
