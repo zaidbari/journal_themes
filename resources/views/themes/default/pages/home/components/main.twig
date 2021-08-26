@@ -1,7 +1,7 @@
 <div class="container-fluid my-5">
     <div class="row mb-5">
         <div class="col-md-2">
-            <div class="bg-light mb-4 rounded shadow p-4">
+            <div class="bg-light my-4 rounded shadow p-4">
                 <h5 class="text-secondary fw-bold mb-4">Journal Metrics</h5>
                 {% for matric in metrics %}
                     <div class="mb-3">
@@ -13,7 +13,7 @@
             <a class="btn btn-secondary w-100" href="/outstanding-reviewers">Outstanding Reviewers</a>
         </div>
         <div class="col-md-7">
-            <div class="article-list mb-4">
+            <div class="article-list my-4">
                 <h3 class="alert bg-secondary text-white">Articles</h3>
                 {% include "article_list.twig" %}
             </div>
@@ -42,31 +42,35 @@
         </div>
         <div class="col-md-3 px-md-4">
             {% if events|length > 0 %}
-                <div class="article-list mb-4">
+                <div class="article-list my-4">
                     <h3 class="alert bg-secondary text-white">Events</h3>
                 </div>
                 {% for event in events %}
-                    {% if event.info and event.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ event.info.images[0] }}" alt="event cover" class="w-100 mb-4 shadow">
+                    {% if event.images|length > 0 %}
+                        {% for img in event.images %}
+                            <img loading="lazy" src="//epublishing.io/storage/{{ img }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                        {% endfor %}
                     {% endif %}
                     <p class="lead">{{ event.title }}</p>
                     <p>{{ event.content|raw }}</p>
                 {% endfor %}
             {% endif %}
             {% if news|length > 0 %}
-                <div class="article-list mb-4">
+                <div class="article-list my-4">
                     <h3 class="alert bg-secondary text-white">News</h3>
                 </div>
                 {% for n in news %}
-                    {% if n.info and news.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ n.info.images[0] }}" alt="news cover" class="w-100 mb-4 shadow">
+                    {% if n.images|length > 0 %}
+                        {% for img in n.images %}
+                            <img loading="lazy" src="//epublishing.io/storage/{{ img }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                        {% endfor %}
                     {% endif %}
                     <p class="lead">{{ n.title }}</p>
                     <p>{{ n.content|raw }}</p>
                 {% endfor %}
             {% endif %}
             {% if featured_articles|length > 0 %}
-                <div class="article-list mb-4">
+                <div class="article-list my-4">
                     <h3 class="alert bg-secondary text-white">Featured Article</h3>
                 </div>
                 {% for article in featured_articles %}
@@ -79,12 +83,14 @@
                 {% endfor %}
             {% endif %}
             {% if announcements %}
-                <div class="article-list mb-4">
+                <div class="article-list my-4">
                     <h3 class="alert bg-secondary text-white">Announcements</h3>
                 </div>
                 {% for announcement in announcements %}
-                    {% if announcement.info and announcement.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ announcement.info.images[0] }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                    {% if announcement.images|length > 0 %}
+                        {% for img in announcement.images %}
+                            <img loading="lazy" src="//epublishing.io/storage/{{ img }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                        {% endfor %}
                     {% endif %}
                     <p class="lead">{{ announcement.title }}</p>
                     <p>{{ announcement.content|raw }}</p>
