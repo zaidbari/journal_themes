@@ -21,7 +21,7 @@ $router->res('/'. Config::env('DOI') . '-[i:id]/pdf', 'Articles@pdf');
 
 $router->res('/archives', 'Archives@index');
 
-$router->res('/[i:year]/[i:volume]/[i:issue]-[i:id]', 'Issues@index');
+$router->res('/[i:year]/[i:volume]/[:issue]?-[i:id]', 'Issues@index');
 
 $router->res('/page/[*:slug]', 'Pages@index');
 
