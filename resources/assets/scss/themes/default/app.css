@@ -10748,7 +10748,6 @@ textarea.form-control-lg {
 }
 .article-list .article a.title {
   color: #2c3a5f;
-  text-transform: capitalize;
 }
 .article-list .article a.title:hover {
   color: #1e8bbd;

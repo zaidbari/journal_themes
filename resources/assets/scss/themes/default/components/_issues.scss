@@ -12,7 +12,7 @@
     @extend %transition;
     a.title {
       color: map-get($theme-colors, 'secondary');
-      text-transform: capitalize;
+      //text-transform: capitalize;
       @extend %transition;
 
       &:hover {
