@@ -4,7 +4,7 @@
             <article class="article px-md-4 py-4 p-2">
                 <h6 class="mb-3">
                     <a rel="license" href="/page/license_information" target="_blank">
-                        <img alt="Open access" class="me-2" style="height: 20px" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Open_Access_logo_PLoS_white.svg" />
+                        <img alt="Open access" class="me-2" style="height: 20px" src="//upload.wikimedia.org/wikipedia/commons/2/25/Open_Access_logo_PLoS_white.svg" />
                     </a>
                     <span class="fw-bold text-muted">
                           {{ a.type }} |
@@ -23,14 +23,14 @@
 
                 <a href="/{{ get_var('DOI') }}-{{ a.id }}" class="btn btn-secondary btn-sm me-3"><i class="bi align-text-bottom bi-file-earmark-ruled me-2"></i> View Full Text</a>
                 {%  if get_pdf(a.id) %}
-                    <a href="/{{ get_var('DOI') }}-{{ a.id }}/pdf" class="btn btn-danger text-white btn-sm me-3"><i class="bi align-text-bottom bi-file-earmark-arrow-down me-2"></i> Download PDF</a>
+                    <a href="/files/pdf/{{ get_var('APP_ABBRV') }}-{{ a.id }}.pdf" target="_blank" class="btn btn-danger text-white btn-sm me-3"><i class="bi align-text-bottom bi-file-earmark-pdf me-2"></i> View PDF</a>
                 {% endif %}
                 <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ a.id }}" aria-expanded="false" aria-controls="collapseExample">
                     <i class="bi align-text-bottom bi-eye me-1"></i> Preview Abstract
                 </button>
 
-                <a rel="license" class="float-end" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
-                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                <a rel="license" class="float-end" href="//creativecommons.org/licenses/by/4.0/" target="_blank">
+                    <img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/88x31.png" />
                 </a>
                 <div class="float-end me-3">
                     <span class="__dimensions_badge_embed__" data-doi="{{ get_var('DOI') }}-{{ a.id }}" data-hide-zero-citations="true" data-style="large_rectangle"></span>

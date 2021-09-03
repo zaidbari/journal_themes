@@ -28,7 +28,7 @@
                     <a href="#" class="nav-link fw-bold" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">How to Cite</a>
                 </li>
                 {%  if get_pdf(article.id) %}
-                    <a href="/{{ DOI }}-{{ article.id }}/pdf"  class="nav-link fw-bold">Download PDF</a>
+                    <a href="/files/pdf/{{ get_var('APP_ABBRV') }}-{{ article.id }}.pdf" target="_blank" class="nav-link fw-bold">View PDF</a>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav ms-auto">

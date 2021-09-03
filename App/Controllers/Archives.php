@@ -29,6 +29,7 @@ class Archives
 			$archives[] = [ 'year' => $key, 'volumes' => $this->lo($value) ];
 		}
 
+
 		View::render('archives/index', [
 			'page_title' => 'Archives',
 			'archives' => $archives,
