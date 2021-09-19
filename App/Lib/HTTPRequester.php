@@ -20,8 +20,11 @@ class HTTPRequester
 	public static function HTTPGet( $url, $cache  = NULL, array $params = [], $headers = [],  $expires = NULL ) : array
 	{
 
-
 		$path = $_SERVER['DOCUMENT_ROOT'] . '/api_cache/';
+
+		if (!file_exists($path)) {
+			mkdir($path, 0777, true);
+		}
 
 		$cache_file = $cache ? $path . $cache : $path . 'api-cache.json';
 		if( !$expires ) $expires = time() - 4 * 60 * 60;
