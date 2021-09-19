@@ -22,7 +22,7 @@ class Archives
 
 	public function index()
 	{
-		$a = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'archive')['body']->data;
+		$a = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'archive', 'archive_cache.json')['body']->data;
 
 		$archives = [];
 		foreach ($a as $key => $value) {

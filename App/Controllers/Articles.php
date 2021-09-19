@@ -16,7 +16,7 @@ class Articles
 	public function show($request)
 	{
 		$id = $request->param('id');
-		$a = HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles/' . $id . '/show')['body'];
+		$a = HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles/' . $id . '/show', 'single_article_'. $id . '_cache.json')['body'];
 		$html = "";
 		if($a != null && !isset($a->error)) {
 			$article = $a->data;
@@ -55,7 +55,7 @@ class Articles
 	public function current()
 	{
 
-		$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles')['body'];
+		$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles', 'current_issue_cache.json')['body'];
 		$articles_data = (array) $articles->data ?? [];
 
 		View::render('articles/list', [
@@ -66,7 +66,7 @@ class Articles
 
 	public function latest()
 	{
-		$articles_data = HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles')['body']->data;
+		$articles_data = HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles', 'latest_issue_cache.json')['body']->data;
 
 		View::render('articles/list', [
 			'page_title' => 'Latest Articles',

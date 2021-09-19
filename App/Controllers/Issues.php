@@ -9,7 +9,7 @@ class Issues
 {
 	public function index( $request )
 	{
-		$articles_data = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'archive/'. $request->param('id').'/articles')['body']->data;
+		$articles_data = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'archive/'. $request->param('id').'/articles', 'single_issue_'. $request->param('id').'_cache.json' )['body']->data;
 	
 		$title = 'Year ' . $request->param('year') .', Volume ' . $request->param('volume') . ' - Issue '. $request->param('issue');
 

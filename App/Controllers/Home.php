@@ -21,18 +21,17 @@ class Home extends Controller
 	 */
 	public function index()
 	{
-		$journal_data = HTTPRequester::HTTPGet(Config::env('API_URL') . 'home')['body']->data;
+		$journal_data =  HTTPRequester::HTTPGet(Config::env('API_URL') . 'home', 'home_journal_data.json')['body']->data;
 
 		/* FOR REGULAR PUBLISHING TYPE*/
 		if(Config::env('PUBLISHING_TYPE') == "Regular") {
-			$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles')['body'];
+			$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles', 'home_article_data.json')['body'];
 			$articles_data = (array) $articles->data ?? [];
 		} else {
 			/* FOR CONTINUOUS PUBLISHING TYPE */
-			$articles = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles')['body']->data;
+			$articles = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles', 'home_article_data.json')['body']->data;
 			$articles_data = $articles;
 		}
-
 
 		View::render('home/index',
 			[

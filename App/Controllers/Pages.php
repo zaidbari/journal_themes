@@ -13,7 +13,7 @@ class Pages
 
 	public function index( $request )
 	{
-		$d = HTTPRequester::HTTPGet(Config::env('API_URL'). 'pages/' . $request->param('slug'));
+		$d = HTTPRequester::HTTPGet(Config::env('API_URL'). 'pages/' . $request->param('slug'), $request->param('slug'). '_cache.json');
 		if(empty($d['body'])) {
 			header('Location: /404');
 		}
@@ -26,7 +26,7 @@ class Pages
 
 	public function reviewers()
 	{
-		$data = HTTPRequester::HTTPGet( Config::env('API_URL'). 'posts/outstanding_reviewers')['body']->data;
+		$data = HTTPRequester::HTTPGet( Config::env('API_URL'). 'posts/outstanding_reviewers', 'outstanding_reviewers_cache.json')['body']->data;
 		View::render('generic/reviewers',
 		[
 			'page_title' => "Outstanding Reviewers",

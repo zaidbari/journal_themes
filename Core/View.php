@@ -56,7 +56,7 @@ class View
 			 */
 
 			// Required to render menu items both in header and footer
-			$twig->addGlobal('menu',(array)  HTTPRequester::HTTPGet(Config::env('API_URL') . 'pages')['body']->data);
+			$twig->addGlobal('menu',(array)  HTTPRequester::HTTPGet(Config::env('API_URL') . 'pages', 'menu_cache.json')['body']->data);
 
 			// Required to render correct theme according to theme settings
 			$twig->addGlobal('THEME', $theme);
