@@ -9,7 +9,7 @@
         <div class="accordion accordion-flush" id="accordionFlushExample">
             {% for data in archives %}
 
-                {% for volume in data.volumes|reverse%}
+                {% for volume in data.volumes|sort((a, b) => b.number <=> a.number)%}
                     <h4>Volume {{ volume.number }} {{ volume.title }}</h4>
                     <ul class="list-unstyled">
                         {% for issue in volume.issue %}
