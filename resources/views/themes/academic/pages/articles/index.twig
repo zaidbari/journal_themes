@@ -1,0 +1,62 @@
+{% extends "layout.twig" %}
+{% block content  %}
+    {% include 'articles/components/header.twig' %}
+    <div class="container my-5">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary fw-bold px-4" data-bs-toggle="modal" data-bs-target="#citation_modal">
+            <i class="bi bi-quote"></i> How to Cite
+        </button>
+        <button type="button" class="btn btn-outline-dark fw-bold px-4" data-bs-toggle="modal" data-bs-target="#authors_modal">
+            <i class="bi bi-people"></i> Authors
+        </button>
+        {% include 'articles/components/info.twig' %}
+        {% include 'articles/components/abstract.twig' %}
+    </div>
+{%  endblock  %}
+{% block meta %}
+    <meta name="citation_firstpage" content="{{ article.first_page }}">
+    <meta name="citation_last" content="{{ article.last_page }}">
+    <meta name="citation_doi" content="{{ get_var('DOI') }}-{{ article.id }}">
+    <meta name="dc.identifier" content="{{ get_var('DOI') }}-{{ article.id }}">
+    <meta name="citation_article_type" content="How to use">
+    <meta name="citation_title" content="{{ article.title }}">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:type" content="article">
+    <meta name="citation_publication_date" content="{% if article.timeline.published_at  != null %}{{ article.timeline.published_at|date('Y/m/d') }}{% else %}{{ article.published_at ? article.published_at|date('Y/m/d') : '' }}{% endif %}">
+{% endblock %}
+
+{% block scripts %}
+    <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block modals %}
+    <!-- Modal -->
+    <div class="modal fade" id="citation_modal" tabindex="-1" aria-labelledby="citation_modal" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% include 'articles/components/citations.twig' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="authors_modal" tabindex="-1" aria-labelledby="authors_modal" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% for author in article.authors|cast_to_array %}
+                        <div class="mb-3">
+                            <h4 class="text-dark serif after">{{ author.title }} {{ author.name }}
+                            {% if author.info != null %}
+                                {% if author.info.corresponding == true %} <small> (Corresponding) </small>{% endif %}
+                            {% endif %}
+                            </h4>
+                            <p>{{ author.affiliation }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

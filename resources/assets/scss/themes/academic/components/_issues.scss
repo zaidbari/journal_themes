@@ -1,0 +1,31 @@
+.article-list {
+  list-style: none;
+  padding: 0;
+
+  .category {
+    margin-bottom: 15px;
+    background: rgba(map-get($theme-colors, 'primary'), 0.3)
+  }
+
+  .article {
+    border: 2px solid  map-get($theme-colors, 'dark');
+    margin-bottom: 15px;
+    @extend %transition;
+    a.title {
+      color: map-get($theme-colors, 'dark');
+      //text-transform: capitalize;
+      @extend %transition;
+
+      &:hover {
+        color: darken(map-get($theme-colors, 'primary'), 10);
+        @extend %transition;
+
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      @extend %transition;
+    }
+  }
+}

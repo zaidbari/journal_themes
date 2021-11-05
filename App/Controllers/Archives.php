@@ -11,8 +11,11 @@ use Core\View;
 class Archives
 {
 
+
 	function lo($v) : array
 	{
+		// create an array of numbers 1 to 10
+
 		$a = [];
 		foreach ((array) $v as $key => $value) {
 			$a[] = [ 'number' => $value->number, 'title' => $value->title, 'issue' => $value->issues ];

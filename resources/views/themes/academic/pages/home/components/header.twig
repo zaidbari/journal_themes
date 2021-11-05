@@ -1,0 +1,28 @@
+<div class="bg-dark text-white py-md-5 py-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-2 col-md-4 px-4">
+                <img src="//epublishing.io/storage/{{ journal.cover }}" loading="lazy" class="img-fluid shadow-lg rounded mb-2" alt="{{ APP_NAME }} current issue cover" />
+            </div>
+            <div class="col-lg-8 align-self-center col-md-8 px-4">
+                <h1 class="fw-bold">{{ journal.title }}</h1>
+                <p class="lead">{{ data.subtitle }}</p>
+                {{ short_desc|raw }}
+
+                <hr class="text-light">
+                <h5>
+                    {% if journal.issn != null %}
+                        <span class="font-monospace"><b class="fw-bold">ISSN: </b>{{ journal.issn }}</span>  {% if journal.issn != null and journal.eissn != null %} <span class="text-muted fw-bold"> | </span> {% endif %}
+                    {% endif %}
+                    {% if journal.eissn != null %}
+                        <span class="font-monospace"><b class="fw-bold">EISSN: </b>{{ journal.eissn }}</span>
+                    {% endif %}
+                    <span class="text-muted fw-bold"> | </span><span class="font-monospace"><b class="fw-bold">DOI: </b>{{ get_var('DOI') }}/</span>
+                </h5>
+                <hr class="text-light">
+                <a class="btn btn-outline-secondary fw-bold" href="/outstanding-reviewers">View Outstanding Reviewers</a>
+
+            </div>
+        </div>
+    </div>
+</div>

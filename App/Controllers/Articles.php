@@ -28,7 +28,6 @@ class Articles
 			header('Location: /404');
 			exit();
 		}
-
 		View::render('articles/index', [
 			'page_title' => $article->title,
 			'article' => $article,

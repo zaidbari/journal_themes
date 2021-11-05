@@ -19,6 +19,7 @@ class HTTPRequester
 	 */
 	public static function HTTPGet( $url, $cache  = NULL, array $params = [], $headers = [],  $expires = NULL ) : array
 	{
+
 		$query = http_build_query($params);
 		$ch = curl_init($url . '?' . $query);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -33,7 +34,7 @@ class HTTPRequester
 
 		curl_close($ch);
 		return ["header" => $header, "body" => json_decode($body), "code" => $code];
-
+//
 //		$path = $_SERVER['DOCUMENT_ROOT'] . '/api_cache/';
 //		if (!file_exists($path)) mkdir($path, 0777, true);
 //		$cache_file = $cache ? $path . $cache : $path . 'api-cache.json';

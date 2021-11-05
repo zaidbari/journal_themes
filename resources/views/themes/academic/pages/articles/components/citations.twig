@@ -1,0 +1,73 @@
+<h4 class="text-dark serif after">Pubmed Style</h4>
+<p>
+    {{ article.authors_names }}. 
+    {{ article.title }}. 
+    {{ get_var('APP_ABBRV') }}.
+    {{ article.published_at|date('Y') }};
+    {{ article.published_at|date('d') }}
+    ({{ article.published_at|date('F Y') }}): 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">Web Style</h4>
+<p>
+    {{ article.authors_names }}.
+    {{ article.title }}.
+    <a href="{{ self_link }}" target="_blank" rel="noreferrer noopener">{{ self_link}}</a>
+    [Access: {{ "now"|date("F d, Y") }}].
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">AMA (American Medical Association) Style</h4>
+<p>
+    {{ article.authors_names }}.
+    {{ article.title }}.
+    {{ get_var('APP_ABBRV') }}.
+    {{ article.published_at|date('Y') }};
+    {{ article.published_at|date('d') }}
+    ({{ article.published_at|date('F Y') }}): 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">Vancouver/ICMJE Style</h4>
+<p>
+    {{ article.authors_names }}.
+    {{ article.title }}.
+    {{ get_var('APP_ABBRV') }}. ({{ article.published_at|date('Y') }}),
+    [cited {{ "now"|date("F d, Y") }}];
+    {{ article.published_at|date('d') }}
+    ({{ article.published_at|date('F Y') }}): 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">Harvard Style</h4>
+<p>
+    {{ article.authors_names }}
+    ({{ article.published_at|date('Y') }})
+    {{ article.title }}.
+    {{ get_var('APP_ABBRV') }},
+    {{ article.published_at|date('d') }}
+    ({{ article.published_at|date('F Y') }}): 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">Chicago Style</h4>
+<p>
+    {{ article.authors_names }}.
+    "{{ article.title }}."
+    {{ get_var('JOURNAL_TITLE') }}
+    {{ article.published_at|date('d') }} ({{ article.published_at|date('Y') }}), 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">MLA (The Modern Language Association) Style</h4>
+<p>
+    {{ article.authors_names }}.
+    "{{ article.title }}."
+    {{ get_var('JOURNAL_TITLE') }}
+    {{ article.published_at|date('d') }}.{{ article.published_at|date('F Y') }} ({{ article.published_at|date('Y') }}), 86-91.
+    Print. <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>
+<h4 class="text-dark serif after">APA (American Psychological Association) Style</h4>
+<p>
+    {{ article.authors_names }}
+    ({{ article.published_at|date('Y') }})
+    {{ article.title }}.
+    {{ get_var('JOURNAL_TITLE') }},
+    {{ article.published_at|date('d') }} ({{ article.published_at|date('F Y') }}), 86-91.
+    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+</p>

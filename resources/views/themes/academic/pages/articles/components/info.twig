@@ -1,0 +1,37 @@
+<hr>
+<p class="font-monospace">
+    <span class="fw-bold text-dark">RECEIVED: </span>
+    {% if article.timeline.submitted_at %}
+        {{ article.timeline.submitted_at|date('M d, Y') }}
+    {% else %}
+        {{ article.created_at ? article.created_at|date('M d, Y') : '' }}
+    {% endif %}
+    {% if article.timeline.revised_at != null %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">REVISED: </span>
+        {{ article.timeline.revised_at|date('M d, Y') }}
+    {% elseif article.revised_at != null %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">REVISED: </span>
+        {{ article.revised_at ? article.revised_at|date('M d, Y') : '' }}
+    {% endif %}
+
+    {% if article.timeline.approved_at != null %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">ACCEPTED: </span>
+        {{ article.timeline.approved_at|date('M d, Y') }}
+    {% elseif article.approved_at %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">ACCEPTED: </span>
+        {{ article.approved_at ? article.approved_at|date('M d, Y') : '' }}
+    {% endif %}
+    {% if article.timeline.published_at != null %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">PUBLISHED: </span>
+        {{ article.timeline.published_at|date('M d, Y') }}
+    {% elseif article.published_at %}
+        <span class="text-muted fw-bold"> | </span>
+        <span class="fw-bold text-dark">PUBLISHED: </span>
+        {{ article.published_at ? article.published_at|date('M d, Y') : '' }}
+    {% endif %}
+</p>

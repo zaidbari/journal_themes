@@ -1,0 +1,55 @@
+<div class="bg-dark text-white py-5">
+    <div class="container  text-center">
+        <h1 class="fw-bold">{{ article.type }}</h1>
+        <hr class="text-light">
+        <h6>
+            {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                <span class="fw-bold font-monospace">VOLUME:</span> {{ article.volume }}<span class="text-muted fw-bold"> | </span> <span class="fw-bold font-monospace">ISSUE:</span> {{ article.issue }}<span class="text-muted fw-bold"> | </span>
+            {% endif %}
+            {% if article.timeline.published_at  != null %}
+                - {{ article.timeline.published_at|date('F d, Y') }}<span class="text-muted fw-bold"> | </span>
+            {% endif %}
+            {% if article.code != null %}
+                <span class="fw-bold font-monospace">CODE:</span> {{ article.code }}<span class="text-muted fw-bold"> | </span>
+            {% endif %}
+            {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                <span class="fw-bold font-monospace">PAGE:</span> ({{ article.first_page }} - {{ article.last_page }})<span class="text-muted fw-bold d-md-inline d-none "> | </span>
+            {% endif %}
+            {% if article.doi != null %}
+                <a target="_blank" class="text-white font-monospace d-md-inline d-block " rel="noreferrer noopener" href="https://doi.org/{{ article.doi }}"><span class="fw-bold">DOI:</span> {{ article.doi }}</a>
+            {% endif %}
+        </h6>
+        <hr class="text-light">
+        <div class="row justify-content-between">
+            <div class="text-md-start text-center mb-3 col-md-3">
+                {% if article.previous != null %}
+                    <a href="/{{ DOI }}-{{ article.previous.id }}" class="text-primary fw-bold">
+                        <i class="bi bi-arrow-left"></i> Previous Article
+                    </a>
+                {% else %}
+                    <a href="/" class="nav-link fw-bold disabled" disabled>
+                        <i class="bi bi-arrow-left"></i> Previous Article
+                    </a>
+                {% endif %}
+            </div>
+            <div class="text-center col-md-3 mb-3">
+                {%  if get_pdf(article.id) %}
+                    <a href="/files/pdf/{{ get_var('APP_ABBRV') }}-{{ article.id }}.pdf" target="_blank" class="btn btn-outline-light px-4 fw-bold btn-sm">
+                        <i class="bi align-text-center bi-download h5 me-2"></i>Download PDF
+                    </a>
+                {% endif %}
+            </div>
+            <div class="text-md-end text-center col-md-3">
+                {% if article.next != null %}
+                        <a href="/{{ DOI }}-{{ article.next.id }}"  class="text-primary fw-bold">
+                            Next Article <i class="bi bi-arrow-right"></i>
+                        </a>
+                {% else %}
+                        <a href="/"  class="nav-link fw-bold disabled" disabled>
+                            Next Article <i class="bi bi-arrow-right"></i>
+                        </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

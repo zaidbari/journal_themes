@@ -1,0 +1,97 @@
+<div class="container-fluid my-5">
+    <div class="row mb-5 justify-content-center">
+
+
+        <div class="col-md-7">
+            <div class="article-list my-4">
+                <h3 class="text-dark serif after">Articles</h3>
+                {% include "article_list.twig" %}
+            </div>
+        </div>
+
+        <div class="col-md-3 px-md-4">
+            {% if events|length > 0 %}
+                <div class="article-list my-4">
+                    <h3 class="text-dark serif after">Events</h3>
+                </div>
+                {% for event in events %}
+                    {% if event.images|length > 0 %}
+                        {% for img in event.images %}
+                            <img loading="lazy" src="//epublishing.io/storage/{{ img }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                        {% endfor %}
+                    {% endif %}
+                    <p class="h5 fw-bold text-dark">{{ event.title }}</p>
+                    <p>{{ event.content|raw }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if news|length > 0 %}
+                <div class="article-list my-4">
+                    <h3 class="text-dark serif after">News</h3>
+                </div>
+                {% for n in news %}
+                    {% if n.images|length > 0 %}
+                        {% for img in n.images %}
+                            <img loading="lazy" src="//epublishing.io/storage/{{ img }}" alt="announcement cover" class="w-100 mb-4 shadow">
+                        {% endfor %}
+                    {% endif %}
+                    <p class="h5 fw-bold text-dark">{{ n.title }}</p>
+                    <p>{{ n.content|raw }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if featured_articles|length > 0 %}
+                <div class="article-list my-4">
+                    <h3 class="text-dark serif after">Featured Article</h3>
+                </div>
+                {% for article in featured_articles %}
+                    {% if article.info and article.info.images %}
+                        <img loading="lazy"
+                             src="//epublishing.io/storage/{{ article.info.images[0] }}"
+                             alt="article cover"
+                             class="w-100 mb-4 shadow rounded"
+                        >
+                    {% endif %}
+                    <p class="h5 fw-bold text-dark">{{ article.title }}</p>
+                    <p>{{ article.content|raw }}</p>
+                    <a href="{{ article.info.url }}" class="btn btn-dark fw-bold w-100 btn-sm">Read full article</a>
+                {% endfor %}
+            {% endif %}
+            {% if announcements %}
+                <div class="article-list my-4">
+                    <h3 class="text-dark serif after">Announcements</h3>
+                </div>
+                {% for announcement in announcements %}
+                    {% if announcement.images|length > 0 %}
+                        {% for img in announcement.images %}
+                            <img loading="lazy"
+                                 src="//epublishing.io/storage/{{ img }}"
+                                 alt="announcement cover"
+                                 class="w-100 mb-4 shadow rounded"
+                            >
+                        {% endfor %}
+                    {% endif %}
+                    <p class="h5 fw-bold text-dark">{{ announcement.title }}</p>
+                    <p>{{ announcement.content|raw }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if chief_editor != null %}
+                <div class="article-list my-4">
+                    <h3 class="text-dark serif after">About Editor in Chief</h3>
+                    <div class="col-md-6 mb-4 ">
+                        <div class="ratio ratio-1x1">
+                            <img class="img-fluid border-secondary border-2 border rounded shadow"
+                                 src="//epublishing.io/storage/{{ chief_editor.avatar }}"
+                                 alt="{{ chief_editor.name }}"
+                                 loading="lazy"
+                            />
+                        </div>
+                    </div>
+                    <p class="h5 fw-bold text-dark">{{ chief_editor.name }}, {{ chief_editor.qualification }}</p>
+                    <p>{% for a in chief_editor.affiliations %}{{ a }}{% if loop.last == false %}, {% endif %}{% endfor %}</p>
+                    <p>{{ chief_editor.bio|raw }}</p>
+                    <p>{{ chief_editor.message|raw }}</p>
+
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
