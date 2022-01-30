@@ -46,7 +46,7 @@ class View
 			]);
 
 			$twig = new Environment($loader, [
-//				'cache' => Config::CACHE,
+				'cache' => Config::CACHE,
 				'auto_reload' => Config::RELOAD
 			]);
 
