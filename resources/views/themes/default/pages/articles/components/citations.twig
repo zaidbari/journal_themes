@@ -1,12 +1,19 @@
 <h4 class="text-secondary">Pubmed Style</h4>
 <p>
-    {{ article.authors_names }}. 
-    {{ article.title }}. 
+    {{ article.authors_names }}.
+    {{ article.title }}.
     {{ get_var('APP_ABBRV') }}.
     {{ article.published_at|date('Y') }};
     {{ article.published_at|date('d') }}
-    ({{ article.published_at|date('F Y') }}): 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    ({{ article.published_at|date('F Y') }}):
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {% endif %}
 </p>
 <h4 class="text-secondary">Web Style</h4>
 <p>
@@ -14,7 +21,10 @@
     {{ article.title }}.
     <a href="{{ self_link }}" target="_blank" rel="noreferrer noopener">{{ self_link}}</a>
     [Access: {{ "now"|date("F d, Y") }}].
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">AMA (American Medical Association) Style</h4>
 <p>
@@ -23,8 +33,19 @@
     {{ get_var('APP_ABBRV') }}.
     {{ article.published_at|date('Y') }};
     {{ article.published_at|date('d') }}
-    ({{ article.published_at|date('F Y') }}): 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    ({{ article.published_at|date('F Y') }}):
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {% else %}
+        <span class="fw-bold font-monospace">Article Code: </span>e-{{ article.id }}
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">Vancouver/ICMJE Style</h4>
 <p>
@@ -33,8 +54,17 @@
     {{ get_var('APP_ABBRV') }}. ({{ article.published_at|date('Y') }}),
     [cited {{ "now"|date("F d, Y") }}];
     {{ article.published_at|date('d') }}
-    ({{ article.published_at|date('F Y') }}): 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    ({{ article.published_at|date('F Y') }}):
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">Harvard Style</h4>
 <p>
@@ -43,34 +73,51 @@
     {{ article.title }}.
     {{ get_var('APP_ABBRV') }},
     {{ article.published_at|date('d') }}
-    ({{ article.published_at|date('F Y') }}): 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
-</p>
-<h4 class="text-secondary">Turabian Style</h4>
-<p>
-    {{ article.authors_names }}.
-    {{ article.published_at|date('Y') }}.
-    {{ article.title }}.
-    {{ get_var('JOURNAL_TITLE') }},
-    {{ article.published_at|date('d') }}
-    ({{ article.published_at|date('F Y') }}): 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    ({{ article.published_at|date('F Y') }}):
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">Chicago Style</h4>
 <p>
     {{ article.authors_names }}.
     "{{ article.title }}."
     {{ get_var('JOURNAL_TITLE') }}
-    {{ article.published_at|date('d') }} ({{ article.published_at|date('Y') }}), 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {{ article.published_at|date('d') }} ({{ article.published_at|date('Y') }}),
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">MLA (The Modern Language Association) Style</h4>
 <p>
     {{ article.authors_names }}.
     "{{ article.title }}."
     {{ get_var('JOURNAL_TITLE') }}
-    {{ article.published_at|date('d') }}.{{ article.published_at|date('F Y') }} ({{ article.published_at|date('Y') }}), 86-91.
-    Print. <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {{ article.published_at|date('d') }}.{{ article.published_at|date('F Y') }} ({{ article.published_at|date('Y') }}),
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    Print.
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>
 <h4 class="text-secondary">APA (American Psychological Association) Style</h4>
 <p>
@@ -78,6 +125,15 @@
     ({{ article.published_at|date('Y') }})
     {{ article.title }}.
     {{ get_var('JOURNAL_TITLE') }},
-    {{ article.published_at|date('d') }} ({{ article.published_at|date('F Y') }}), 86-91.
-    <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+    {{ article.published_at|date('d') }} ({{ article.published_at|date('F Y') }}),
+    {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+        {{ article.first_page }}-{{ article.last_page }}.
+    {% else %} e-{{ article.id }}
+    {% endif %}
+
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+
+        <a href="https://dx.doi.org/{{ article.doi }}" target="_blank" rel="noreferrer noopener">doi:{{ article.doi }}</a>
+
+    {% endif %}
 </p>

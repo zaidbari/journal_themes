@@ -14,10 +14,14 @@
     </div>
 {%  endblock  %}
 {% block meta %}
-    <meta name="citation_firstpage" content="{{ article.first_page }}">
-    <meta name="citation_last" content="{{ article.last_page }}">
-    <meta name="citation_doi" content="{{ get_var('DOI') }}-{{ article.id }}">
-    <meta name="dc.identifier" content="{{ get_var('DOI') }}-{{ article.id }}">
+    {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+        {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+            <meta name="citation_firstpage" content="{{ article.first_page }}">
+            <meta name="citation_last" content="{{ article.last_page }}">
+        {% endif %}
+        <meta name="citation_doi" content="{{ get_var('DOI') }}-{{ article.id }}">
+        <meta name="dc.identifier" content="{{ get_var('DOI') }}-{{ article.id }}">
+    {% endif %}
     <meta name="citation_article_type" content="How to use">
     <meta name="citation_title" content="{{ article.title }}">
     <meta property="og:title" content="{{ article.title }}">
@@ -36,7 +40,6 @@
             <div class="modal-content">
                 <div class="modal-body">
                     {% include 'articles/components/citations.twig' %}
-
                 </div>
             </div>
         </div>
@@ -47,7 +50,7 @@
                 <div class="modal-body">
                     {% for author in article.authors|cast_to_array %}
                         <div class="mb-3">
-                            <h4 class="text-dark serif after">{{ author.title }} {{ author.name }}
+                            <h4 class="text-dark serif after">{{ author.name }}
                             {% if author.info != null %}
                                 {% if author.info.corresponding == true %} <small> (Corresponding) </small>{% endif %}
                             {% endif %}

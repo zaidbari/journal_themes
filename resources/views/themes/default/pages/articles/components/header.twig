@@ -5,23 +5,20 @@
         </h3>
         <div>
             <p class="lead">
-            {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
-                Volume {{ article.volume }}, Issue {{ article.issue }}
-            {% endif %}
-            {% if article.timeline.published_at  != null %}
-               - {{ article.timeline.published_at|date('F d, Y') }},
-            {% endif %}
-            {% if article.code != null %}
-                {{ article.code }}
-            {% endif %}
-            {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
-                Page ({{ article.first_page }} - {{ article.last_page }})
-            {% endif %}
-
+                {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                    <span class="fw-bold font-monospace">VOLUME:</span> {{ article.volume }}<span class="text-muted fw-bold"> | </span> <span class="fw-bold font-monospace">ISSUE:</span> {{ article.issue }}<span class="text-muted fw-bold"> | </span>
+                {% endif %}
+                {% if article.timeline.published_at  != null %}{{ article.timeline.published_at|date('M d, Y') }}{% else %}{{ article.published_at ? article.published_at|date('M d, Y') : '' }}{% endif %}
+                {% if get_var('PUBLISHING_TYPE') == 'Continuous' %}
+                    <span class="text-muted fw-bold d-md-inline d-none "> | </span><span class="fw-bold font-monospace">CODE:</span> e-{{ article.id }}
+                {% endif %}
+                {% if get_var('PUBLISHING_TYPE') != 'Continuous' %}
+                    <span class="text-muted fw-bold d-md-inline d-none "> | </span><span class="fw-bold font-monospace">PAGE:</span> ({{ article.first_page }} - {{ article.last_page }})
+                {% endif %}
+                {% if article.doi != null and get_var('JOURNAL_ID') != 7 %}
+                    <span class="text-muted fw-bold d-md-inline d-none "> | </span> <a target="_blank" class="font-monospace d-md-inline d-block " rel="noreferrer noopener" href="https://doi.org/{{ article.doi }}"><span class="fw-bold text-dark">DOI:</span> <span class="text-muted">{{ article.doi }}</span></a>
+                {% endif %}
             </p>
-            {% if article.doi != null %}
-                <a target="_blank" class="d-block" rel="noreferrer noopener" href="https://doi.org/{{ article.doi }}">https://doi.org/{{ article.doi }}</a>
-            {% endif %}
         </div>
 
     </div>

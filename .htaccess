@@ -14,5 +14,5 @@ Options All -Indexes
 #Header add Access-Control-Allow-Headers: "*"
 
 #RewriteEngine On
-RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTPS} != on
 RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
