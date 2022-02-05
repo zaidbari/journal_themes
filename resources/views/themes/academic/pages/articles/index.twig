@@ -56,6 +56,13 @@
                             {% endif %}
                             </h4>
                             <p>{{ author.affiliation }}</p>
+                            {% if author.orcid_id != null %}
+                                <p>
+                                    <a href='https://orcid.org/{{ author.orcid_id }}' target='_blank'>
+                                        <img width="20px" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" class="mr-2" loading="eager" alt="orcid logo" /> ORCID
+                                    </a>
+                                </p>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
