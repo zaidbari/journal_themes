@@ -74,8 +74,14 @@
                     <h3 class="alert bg-secondary text-white">Featured Article</h3>
                 </div>
                 {% for article in featured_articles %}
-                    {% if article.info and article.info.images %}
-                        <img loading="lazy" src="//epublishing.io/storage/{{ article.info.images[0] }}" alt="article cover" class="w-100 mb-4 shadow">
+                    {% if article.images|length > 0 %}
+                        {% for img in article.images %}
+                            <img loading="lazy"
+                                 src="//epublishing.io/storage/{{ img }}"
+                                 alt="announcement cover"
+                                 class="w-100 mb-4 shadow rounded"
+                            >
+                        {% endfor %}
                     {% endif %}
                     <p class="lead">{{ article.title }}</p>
                     <p>{{ article.content|raw }}</p>
