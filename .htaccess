@@ -14,5 +14,5 @@ Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
 Header add Access-Control-Allow-Headers: "*"
 
 #RewriteEngine On
-#RewriteCond %{HTTPS} off
-#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
