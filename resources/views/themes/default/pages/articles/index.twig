@@ -4,7 +4,6 @@
     <div class="container my-5">
 
         {% include 'articles/components/nav.twig' %}
-
         <div class="tab-content my-4" id="pills-tabContent">
             <h3>{{ article.title|raw }}</h3>
             <hr />
@@ -23,8 +22,8 @@
 {% block meta %}
     <meta name="citation_firstpage" content="{{ article.first_page }}">
     <meta name="citation_last" content="{{ article.last_page }}">
-    <meta name="citation_doi" content="{{ get_var('DOI') }}-{{ article.id }}">
-    <meta name="dc.identifier" content="{{ get_var('DOI') }}-{{ article.id }}">
+    <meta name="citation_doi" content="{{ article.doi }}">
+    <meta name="dc.identifier" content="{{ article.doi }}">
     <meta name="citation_article_type" content="How to use">
     <meta name="citation_title" content="{{ article.title }}">
     <meta property="og:title" content="{{ article.title }}">

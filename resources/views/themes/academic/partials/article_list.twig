@@ -35,9 +35,9 @@
                 <a rel="license" class="float-end" href="//creativecommons.org/licenses/by/4.0/" target="_blank">
                     <img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/88x31.png" />
                 </a>
-{#                <div class="float-end me-3">#}
-{#                    <span class="__dimensions_badge_embed__" data-doi="{{ get_var('DOI') }}-{{ a.id }}" data-hide-zero-citations="true" data-style="large_rectangle"></span>#}
-{#                </div>#}
+                <div class="float-end me-3">
+                    <span class="__dimensions_badge_embed__" data-doi="{{ article.doi }}" data-hide-zero-citations="true" data-style="large_rectangle"></span>
+                </div>
                 <div class="collapse" id="collapse-{{ a.id }}">
                     <div class="mt-3">
                         {{ a.abstract|raw }}
