@@ -7,8 +7,10 @@
     </div>
     <div class="container my-5">
         <div class="accordion accordion-flush" id="accordionFlushExample">
+            {% if get_var('JOURNAL_ID') == 5 %}
+                <a href="http://thebiomedicapk.com/" target="_blank" class="btn w-100 btn-lg mb-4 btn-primary">Our Previous articles</a>
+            {% endif %}
             {% for data in archives %}
-
                 {% for volume in data.volumes|sort((a, b) => b.number <=> a.number)%}
                     <h4>Volume {{ volume.number }} {{ volume.title }}</h4>
                     <ul class="list-unstyled">
