@@ -31,6 +31,11 @@
 
 {% block scripts %}
     <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+
+    {% if get_var('TRENDMD_JOURNAL_ID') != null %}
+        <script defer src='//js.trendmd.com/trendmd.min.js' data-trendmdconfig='{"journal_id":"{{ get_var('TRENDMD_JOURNAL_ID') }}","element":"#trendmd-suggestions"}'></script>
+    {% endif %}
+
 {% endblock %}
 
 {% block modals %}

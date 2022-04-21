@@ -30,3 +30,13 @@
     <meta property="og:type" content="article">
     <meta name="citation_publication_date" content="{% if article.timeline.published_at  != null %}{{ article.timeline.published_at|date('Y/m/d') }}{% else %}{{ article.published_at ? article.published_at|date('Y/m/d') : '' }}{% endif %}">
 {% endblock %}
+
+
+{% block scripts %}
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+
+{% if get_var('TRENDMD_JOURNAL_ID') != null %}
+    <script defer src='//js.trendmd.com/trendmd.min.js' data-trendmdconfig='{"journal_id":"{{ get_var('TRENDMD_JOURNAL_ID') }}","element":"#trendmd-suggestions"}'></script>
+{% endif %}
+
+{% endblock %}
