@@ -10,10 +10,26 @@
     {% block meta %}{% endblock %}
 </head>
 <body>
-    {% include "navbar.twig" %}
+<div class="modal fade" id="ad-blocker-model" tabindex="-1" aria-labelledby="ad-blocker-model" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Disable ad-blocker</h5>
+            </div>
+
+            <div class="modal-body">
+                Ad-Blocker detected. Please disable it to view page.
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "navbar.twig" %}
     <main>{% block content %}{% endblock %}</main>
     {% include "footer.twig" %}
     {% include "scripts.twig" %}
+
+    {% block modals %}{% endblock %}
     {% block scripts %}{% endblock %}
 </body>
 </html>
