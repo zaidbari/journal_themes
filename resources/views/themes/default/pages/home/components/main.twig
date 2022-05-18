@@ -13,6 +13,14 @@
             <a class="btn btn-secondary w-100" href="/outstanding-reviewers">Outstanding Reviewers</a>
         </div>
         <div class="col-md-7">
+                {% if get_var('JOURNAL_ID') == 5 %}
+            <div class="alert alert-info mt-4">
+                <h5>
+
+                Facing technical difficulty in submission! Our support team will assist you. Please send your manuscript via email to: Anastasiia.Pavlenco@sofiafields.com
+                </h5>
+            </div>
+                {% endif %}
             <div class="article-list my-4">
                 <h3 class="alert bg-secondary text-white">Articles</h3>
                 {% include "article_list.twig" %}
