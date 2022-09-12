@@ -56,12 +56,15 @@ class Articles
 
 		$articles = HTTPRequester::HTTPGet(Config::env('API_URL') . 'issues/current/articles', 'current_issue_cache.json')['body'];
 		$articles_data = (array) $articles->data ?? [];
-
+	
 		View::render('articles/list', [
 				'page_title' => 'Current Issue',
 				'articles' => $articles_data
 		]);
 	}
+
+	
+
 
 	public function latest()
 	{

@@ -9,13 +9,19 @@
                         <img alt="Open access" class="me-2" style="height: 20px" src="//upload.wikimedia.org/wikipedia/commons/2/25/Open_Access_logo_PLoS_white.svg" />
                     </a>
                     <span class="fw-bold text-muted">
-                          {{ a.type }} |
-                            {% if a.timeline.published_at  != null %}
-                                {{ a.timeline.published_at|date('F d, Y') }}
-                            {% else %}
-                                {{ a.published_at ? a.published_at|date('F d, Y') : '' }}
-                            {% endif %}
-                        </span>
+                        {{ a.type }} |
+                        {% if a.timeline.published_at  != null %}
+                            {{ a.timeline.published_at|date('F d, Y') }}
+                        {% else %}
+                            {{ a.published_at ? a.published_at|date('F d, Y') : '' }}
+                        {% endif %}
+                    </span>
+                    <span class="fw-bold text-muted">
+                        | 
+                        {% if get_var('PUBLISHING_TYPE') == 'Regular' %}
+                            Page: ({{a.first_page}} - {{a.last_page}})
+                        {% endif %}
+                    </span>
                 </h6>
                 <h6><a class="title fw-bold" href="/{{ get_var('DOI') }}-{{ a.id }}">{{ a.title|raw }}</a></h6>
                 <p class="text-muted" style="font-size: 14px">

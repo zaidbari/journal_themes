@@ -6,10 +6,12 @@
         </div>
     </div>
     <div class="container my-5">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
             {% if get_var('JOURNAL_ID') == 5 %}
-                <a href="http://thebiomedicapk.com/" target="_blank" class="btn w-100 btn-lg mb-4 btn-primary">Our Previous articles</a>
+            <h2 class="shadow-lg bg-white p-3" style="border-left: 4px solid #343a40; text-decoration: underline">
+                <a href="http://thebiomedicapk.com/" target="_blank" class="w-100 text-muted block mb-5">To see our old archives, please click here to visit our archived website</a>
+            </h2>
             {% endif %}
+        <div class="accordion accordion-flush" id="accordionFlushExample">
             {% for data in archives %}
                 {% for volume in data.volumes|sort((a, b) => b.number <=> a.number)%}
                     <h4>Volume {{ volume.number }} {{ volume.title }}</h4>

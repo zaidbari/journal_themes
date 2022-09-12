@@ -32,7 +32,6 @@ class Home extends Controller
 			$articles = (array) HTTPRequester::HTTPGet(Config::env('API_URL') . 'articles', 'home_article_data.json')['body']->data;
 			$articles_data = $articles;
 		}
-
 		View::render('home/index',
 			[
 				'page_title' => 'Home',
@@ -46,6 +45,5 @@ class Home extends Controller
 				'announcements' => $journal_data->announcements,
 				'featured_articles' => $journal_data->featured_articles
 			]);
-
 	}
 }
