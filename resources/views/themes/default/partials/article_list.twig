@@ -16,7 +16,7 @@
                     </span>
                     <span class="fw-bold text-muted">
                         | 
-                        {% if get_var('PUBLISHING_TYPE') == 'Regular' %}
+                        {% if get_var('PUBLISHING_TYPE') == 'Regular' and a.first_page != null %}
                             Page: ({{a.first_page}} - {{a.last_page}})
                         {% endif %}
                     </span>
